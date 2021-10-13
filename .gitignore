@@ -2,3 +2,4 @@
 *.pyc
 *.zip
 *.tar.gz
+*pycache*
