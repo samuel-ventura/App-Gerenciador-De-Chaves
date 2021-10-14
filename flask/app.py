@@ -15,8 +15,7 @@ logging.basicConfig(filename=CSV_DIR + 'app.log', filemode='w', format='%(asctim
 
 @app.route('/')
 def root():
-    app.logger.debug('Acesso a /')
-    return ("Ola mundo!")
+    return (render_template('index.html'))
 
 if __name__ == "__main__":
     serve(app, host='0.0.0.0', port=80, url_prefix='/app')
