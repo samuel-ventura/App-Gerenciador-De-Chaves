@@ -3,10 +3,26 @@
 {% block conteudo %}
 
 <p>
-    <a href="https://www.google.com">FUNCIONALIDADE 1</a>
+    <a href="{{url_for('cadastrar_chave')}}">CADASTRAR CHAVE</a>
 </p>
 <p>
-    <a href="https://www.google.com">FUNCIONALIDADE 2</a>
+    <a href="{{url_for('listar_chaves')}}">LISTAR CHAVES</a>
+</p>
+
+<p>
+    <a href="{{url_for('cadastrar_usuario')}}">CADASTRAR USUÁRIO</a>
+</p>
+
+<p>
+    <a href="{{url_for('listar_usuarios')}}">LISTAR USUÁRIOS</a>
+</p>
+
+<p>
+    <a href="{{url_for('emprestar_chave')}}">EMPRESTAR CHAVE</a>
+</p>
+
+<p>
+    <a href="{{url_for('emprestar_chave')}}">LISTAR EMPRESTIMOS</a>
 </p>
 
 {% endblock %}
