@@ -39,8 +39,10 @@ def cadastrar_chave():
     form = ChaveForm()
     if form.validate_on_submit():
         #PROCESSAMENTO DOS DADOS RECEBIDOS
-        app.logger.debug(u'AQUI VEM A IMPLEMENTAÇÃO DO CADASTRO DA CHAVE')
-        app.logger.debug(request.form['nome'])
+        nome = request.form['nome']
+        novaChave = Chave(nome=nome)
+        db.session.add(novaChave)
+        db.session.commit()
         return(redirect(url_for('root')))
     return (render_template('form.html',form=form,action=url_for('cadastrar_chave')))
 
