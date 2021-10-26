@@ -24,6 +24,7 @@ from database import db
 db.init_app(app)
 
 from Usuarios import Usuario
+from Chaves import Chave
 
 @app.route('/')
 def root():
