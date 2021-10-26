@@ -26,6 +26,10 @@ db.init_app(app)
 from Usuarios import Usuario
 from Chaves import Chave
 
+@app.before_first_request
+def inicializar_bd():
+    db.create_all()
+
 @app.route('/')
 def root():
     return (render_template('index.html'))
