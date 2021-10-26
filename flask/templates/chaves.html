@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block conteudo %}
+
+<table class="table">
+<tr>
+    <th>ID</th>
+    <th>Nome</th>
+</tr>
+{% for chave in chaves %}
+    <tr>
+        <td>{{chave.id}}</td>
+        <td>{{chave.nome}}</td>
+    </tr>
+{% endfor %}
+
+</table>
+
+{% endblock %}

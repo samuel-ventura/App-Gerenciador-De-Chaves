@@ -48,7 +48,8 @@ def cadastrar_chave():
 
 @app.route('/chave/listar')
 def listar_chaves():
-    return ("Nao implementado")
+    chaves = Chave.query.order_by(Chave.nome)
+    return(render_template('chaves.html',chaves=chaves))
 
 @app.route('/usuario/listar')
 def listar_usuarios():
