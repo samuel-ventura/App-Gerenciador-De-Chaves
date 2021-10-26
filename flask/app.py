@@ -6,10 +6,9 @@ from flask_bootstrap import Bootstrap
 from flask_wtf.csrf import CSRFProtect
 import logging
 import os
-from flask_sqlalchemy import SQLAlchemy
+
 from formChave import ChaveForm
 from formUsuario import UsuarioForm
-
 app = Flask(__name__)
 bootstrap = Bootstrap(app)
 CSRFProtect(app)
@@ -21,7 +20,10 @@ app.config['SECRET_KEY'] = os.urandom(24)
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + CSV_DIR + 'bd.sqlite3'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-db = SQLAlchemy(app)
+from database import db
+db.init_app(app)
+
+from Usuarios import Usuario
 
 @app.route('/')
 def root():
