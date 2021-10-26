@@ -6,7 +6,7 @@ from flask_bootstrap import Bootstrap
 from flask_wtf.csrf import CSRFProtect
 import logging
 import os
-
+from flask_sqlalchemy import SQLAlchemy
 from formChave import ChaveForm
 from formUsuario import UsuarioForm
 
@@ -18,6 +18,10 @@ CSV_DIR = '/flask/'
 logging.basicConfig(filename=CSV_DIR + 'app.log', filemode='w', format='%(asctime)s %(name)s - %(levelname)s - %(message)s',level=logging.DEBUG)
 
 app.config['SECRET_KEY'] = os.urandom(24)
+
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + CSV_DIR + 'bd.sqlite3'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+db = SQLAlchemy(app)
 
 @app.route('/')
 def root():
