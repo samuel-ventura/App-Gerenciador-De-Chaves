@@ -23,6 +23,7 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 from database import db
 db.init_app(app)
 
+
 from Usuarios import Usuario
 from Chaves import Chave
 
@@ -39,8 +40,7 @@ def cadastrar_chave():
     form = ChaveForm()
     if form.validate_on_submit():
         #PROCESSAMENTO DOS DADOS RECEBIDOS
-        nome = request.form['nome']
-        novaChave = Chave(nome=nome)
+        novaChave = Chave(nome=request.form['nome'])
         db.session.add(novaChave)
         db.session.commit()
         return(redirect(url_for('root')))
@@ -53,15 +53,22 @@ def listar_chaves():
 
 @app.route('/usuario/listar')
 def listar_usuarios():
-    return ("Nao implementado")
+    usuarios = Usuario.query.order_by(Usuario.nome)
+    return(render_template('usuarios.html',usuarios=usuarios))
 
 @app.route('/usuario/cadastrar',methods=['POST','GET'])
 def cadastrar_usuario():
     form = UsuarioForm()
     if form.validate_on_submit():
         #PROCESSAMENTO DOS DADOS RECEBIDOS
-        app.logger.debug(u'AQUI VEM A IMPLEMENTAÇÃO DO CADASTRO DE USUÁRIO')
-        app.logger.debug(request.form['nome'])
+        nome = request.form['nome']
+        username = request.form['username']
+        email = request.form['email']
+        telefone = request.form['telefone']
+        senha = request.form['senha']
+        novoUsuario = Usuario(nome=nome,username=username,email=email,telefone=telefone,senha=senha)
+        db.session.add(novoUsuario)
+        db.session.commit()
         return(redirect(url_for('root')))
     return (render_template('form.html',form=form,action=url_for('cadastrar_usuario')))
 
