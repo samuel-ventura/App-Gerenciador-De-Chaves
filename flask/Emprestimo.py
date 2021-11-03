@@ -9,5 +9,3 @@ class Emprestimo(db.Model):
     id_chave = db.Column(db.Integer,db.ForeignKey('chave.id'))
     data_emprestimo = db.Column(db.DateTime,unique=False,nullable=False,default=func.now())
     data_devolucao = db.Column(db.DateTime,unique=False,nullable=True)
-    chave = db.relationship('Chave',backref='Emprestimo',lazy=True)
-    usuario = db.relationship('Usuario',backref='Emprestimo',lazy=True)

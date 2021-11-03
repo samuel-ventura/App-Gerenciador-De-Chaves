@@ -80,6 +80,7 @@ def cadastrar_usuario():
 def emprestar_chave():
     form = EmprestimoForm()
     chaves = Chave.query.order_by(Chave.nome).all()
+    #chaves = Chave.query.filter(Chave.emprestimos.data_devolucao.is_not(None)).order_by(Chave.nome).all()
     form.chave.choices = [(c.id,c.nome) for c in chaves]
     if form.validate_on_submit():
         #IMPLEMENTAÇÃO DO CADASTRO DO EMPRÉSTIMO
@@ -97,7 +98,7 @@ def listar_emprestimos():
     emprestimos = Emprestimo.query.order_by(Emprestimo.data_emprestimo.desc()).all()
     return(render_template('emprestimos.html',emprestimos=emprestimos))
 
-@app.route('/chave/devolver')
+@app.route('/chave/devolver',methods=['POST'])
 def devolver_chave():
     return ("Nao implementado")
 

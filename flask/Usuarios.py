@@ -7,4 +7,4 @@ class Usuario(db.Model):
     email = db.Column(db.String(120), unique=True, nullable=True)
     telefone = db.Column(db.String(20),unique=False,nullable=True)
     senha = db.Column(db.String(80), unique=False, nullable=False)
-
+    emprestimos = db.relationship('Emprestimo',backref='usuario',lazy=True)
