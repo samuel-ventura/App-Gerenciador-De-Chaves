@@ -9,6 +9,8 @@ import os
 
 from formChave import ChaveForm
 from formUsuario import UsuarioForm
+from formEmprestimo import EmprestimoForm
+
 app = Flask(__name__)
 bootstrap = Bootstrap(app)
 CSRFProtect(app)
@@ -26,9 +28,11 @@ db.init_app(app)
 
 from Usuarios import Usuario
 from Chaves import Chave
+from Emprestimo import Emprestimo
 
 @app.before_first_request
 def inicializar_bd():
+    #db.drop_all()
     db.create_all()
 
 @app.route('/')
@@ -48,12 +52,12 @@ def cadastrar_chave():
 
 @app.route('/chave/listar')
 def listar_chaves():
-    chaves = Chave.query.order_by(Chave.nome)
+    chaves = Chave.query.order_by(Chave.nome).all()
     return(render_template('chaves.html',chaves=chaves))
 
 @app.route('/usuario/listar')
 def listar_usuarios():
-    usuarios = Usuario.query.order_by(Usuario.nome)
+    usuarios = Usuario.query.order_by(Usuario.nome).all()
     return(render_template('usuarios.html',usuarios=usuarios))
 
 @app.route('/usuario/cadastrar',methods=['POST','GET'])
@@ -72,13 +76,26 @@ def cadastrar_usuario():
         return(redirect(url_for('root')))
     return (render_template('form.html',form=form,action=url_for('cadastrar_usuario')))
 
-@app.route('/chave/emprestar')
+@app.route('/chave/emprestar',methods=['POST','GET'])
 def emprestar_chave():
-    return ("Nao implementado")
+    form = EmprestimoForm()
+    chaves = Chave.query.order_by(Chave.nome).all()
+    form.chave.choices = [(c.id,c.nome) for c in chaves]
+    if form.validate_on_submit():
+        #IMPLEMENTAÇÃO DO CADASTRO DO EMPRÉSTIMO
+        nome = request.form['nome']
+        chave = int(request.form['chave'])
+        novoEmprestimo = Emprestimo(id_usuario=1,id_chave=chave,nome_pessoa=nome)
+        db.session.add(novoEmprestimo)
+        db.session.commit()
+        return(redirect(url_for('root')))
+    form.chave.choices = [(c.id,c.nome) for c in chaves]
+    return(render_template('form.html',form=form,action=url_for('emprestar_chave')))
 
 @app.route('/chave/listar_emprestimos')
 def listar_emprestimos():
-    return ("Nao implementado")
+    emprestimos = Emprestimo.query.order_by(Emprestimo.data_emprestimo.desc()).all()
+    return(render_template('emprestimos.html',emprestimos=emprestimos))
 
 @app.route('/chave/devolver')
 def devolver_chave():

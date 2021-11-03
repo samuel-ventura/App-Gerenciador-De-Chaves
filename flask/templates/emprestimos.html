@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block conteudo %}
+
+<table class="table">
+
+    <tr>
+        <th>ID do empréstimo</th>
+        <th>Responsável</th>
+        <th>Quem pegou a chave</th>
+        <th>Chave</th>
+        <th>Entrega</th>
+        <th>Devolução</th>
+        <th>Devolver</th>
+    </tr>
+    {% for emprestimo in emprestimos %}
+        <tr>
+            <td>{{emprestimo.id}}</td>
+            <td>{{emprestimo.usuario.nome}}</td>
+            <td>{{emprestimo.nome_pessoa}}</td>
+            <td>{{emprestimo.chave.nome}}</td>
+            <td>{{emprestimo.data_emprestimo.strftime('%d/%m/%Y %H:%M')}}</td>
+            <td>{{emprestimo.data_devolucao}}</td>
+            <td>DEVOLVER</td>
+        </tr>
+    {% endfor %}
+
+</table>
+
+{% endblock %}
