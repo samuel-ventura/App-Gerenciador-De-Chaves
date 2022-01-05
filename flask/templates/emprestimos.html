@@ -1,30 +1,44 @@
 {% extends "base.html" %}
 
 {% block conteudo %}
+<div id="all-page">
+    <div class="container-sm">
+        <table class="table">
 
-<table class="table">
+            <tr>
+                <th>Responsável</th>
+                <th>Quem pegou a chave</th>
+                <th>Chave</th>
+                <th>Entrega</th>
+                <th>Devolução</th>
+                <th>Devolver</th>
+                <th>Remover</th>
+            </tr>
+            {% for emprestimo in emprestimos %}
+                <tr>
+                    <td>{{emprestimo.usuario.nome}}</td>
+                    <td>{{emprestimo.nome_pessoa}}</td>
+                    <td>{{emprestimo.chave.nome}}</td>
+                    <td>{{emprestimo.data_emprestimo.strftime('%d/%m/%Y %H:%M')}}</td>
+                    {% if emprestimo.data_devolucao is not none %}
+                        <td>{{emprestimo.data_devolucao.strftime('%d/%m/%Y %H:%M')}}</td>
+                    {% else %}
+                        <td>NÃO DEVOLVIDA</td>
+                    {% endif %}
+                    
+                    {% if emprestimo.data_devolucao is not none %}
+                    <td>JÁ DEVOLVIDO</td>
+                    {% else %}
+                    <td> <a href="{{url_for('devolver_chave', id_emprestimo=emprestimo.id)}}">DEVOLVER</a> </td>
+                    {% endif %}
+        
+                    <td> <a href="{{url_for('remover_emprestimo', id_emprestimo=emprestimo.id)}}">REMOVER</a> </td>
+                </tr>
+            {% endfor %}
+        
+        </table>
+    </div>
+</div> 
 
-    <tr>
-        <th>ID do empréstimo</th>
-        <th>Responsável</th>
-        <th>Quem pegou a chave</th>
-        <th>Chave</th>
-        <th>Entrega</th>
-        <th>Devolução</th>
-        <th>Devolver</th>
-    </tr>
-    {% for emprestimo in emprestimos %}
-        <tr>
-            <td>{{emprestimo.id}}</td>
-            <td>{{emprestimo.usuario.nome}}</td>
-            <td>{{emprestimo.nome_pessoa}}</td>
-            <td>{{emprestimo.chave.nome}}</td>
-            <td>{{emprestimo.data_emprestimo.strftime('%d/%m/%Y %H:%M')}}</td>
-            <td>{{emprestimo.data_devolucao}}</td>
-            <td>DEVOLVER</td>
-        </tr>
-    {% endfor %}
-
-</table>
 
 {% endblock %}

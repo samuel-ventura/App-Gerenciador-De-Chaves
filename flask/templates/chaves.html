@@ -2,18 +2,27 @@
 
 {% block conteudo %}
 
-<table class="table">
-<tr>
-    <th>ID</th>
-    <th>Nome</th>
-</tr>
-{% for chave in chaves %}
-    <tr>
-        <td>{{chave.id}}</td>
-        <td>{{chave.nome}}</td>
-    </tr>
-{% endfor %}
+<div id="all-page">
+    <div class="container-sm">
+        <table class="table">
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Disponível</th>
+                <th>Remover</th>
+            </tr>
+            {% for chave in chaves %}
+                <tr>
+                    <td>{{chave.id}}</td>
+                    <td>{{chave.nome}}</td>
+                    <td>{{chave.disponivel}}</td>
+                    <td> <a href="{{url_for('remover_chave', id_chave=chave.id)}}">REMOVER</a> </td>
+                </tr>
+            {% endfor %}
+            
+            </table>
+    </div>
+</div> 
 
-</table>
 
 {% endblock %}

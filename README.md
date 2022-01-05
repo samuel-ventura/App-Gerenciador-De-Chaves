@@ -1,13 +1,7 @@
-# CC0050 - Princípiosde desenvolvimento WEB
+# App de Gereciamento de Chaves 
 
-## Testando a aplicação
-```
-git clone https://gitlab.com/rafaelperazzo/cc0050.git
+ - App desenvolvido em:
+    Back-end: Python/Flask
+    Front-end: Bootstrap
 
-cd cc0050
-
-docker-compose up -d
-
-Abrir no navegador: localhost:4005
-
-```
+ - A aplicação tem como objetivo ser um gerenciador de chaves de um determinado órgão/instituição. Características básicas de gerencimento das ferramentas foram implementadas. Como cadastrar chaves, usuários. Realizar o "empréstimo" de chaves e listagem de todas as informações guardadas.

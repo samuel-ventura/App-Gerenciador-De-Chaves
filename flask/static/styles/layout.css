@@ -1,0 +1,97 @@
+@import url('https://fonts.googleapis.com/css2?family=Bakbak+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kaisei+Opti:wght@700&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#all-page{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 89.3vh;
+    background: #2D2927;
+}
+
+.container-sm {
+    display: flex;
+    width: 300px;
+    height: 600px;
+    justify-content: center;
+    align-items: center;
+    background-color: #685B54;
+
+}
+
+.container p {
+    color:black;
+}
+
+table tr {
+    color: #fff;
+}
+
+table tr td a {
+    text-decoration: none;
+    color: #fff;
+}
+
+#all-view {
+    width: 100%;
+    height: 100vh;
+}
+
+header {
+    background-color: #2D2927;
+    height: 100px;
+}
+
+header .container {
+    display: flex;
+    justify-content: center;    
+}
+
+header .container .col {
+    width: 240px;
+    height: 130px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+header .container .main-col {
+    background-color: #ffff;
+}
+
+
+header .container .main-col span {
+    color:#2D2927;
+    margin-top: -0.5em;
+}
+
+header .container #logo {
+    font-family: 'Bakbak One', cursive;
+    font-size: 36px;
+    font-style: italic;
+}
+
+header .container span {
+    color: #ffff;
+}
+
+header .btn{
+    margin-top: -1em;
+    background-color: #2D2927;
+    border-color: #2D2927;
+    font-family: 'Lato', sans-serif;
+    font-size: 20px;
+}
+
+header .btn:hover {
+    color: #2D2927;
+    background-color: #ffff;
+}

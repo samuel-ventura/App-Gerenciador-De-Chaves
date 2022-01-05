@@ -7,5 +7,5 @@ class Emprestimo(db.Model):
     id_usuario = db.Column(db.Integer,db.ForeignKey('usuario.id'))
     nome_pessoa = db.Column(db.String(100),unique=False,nullable=True)
     id_chave = db.Column(db.Integer,db.ForeignKey('chave.id'))
-    data_emprestimo = db.Column(db.DateTime,unique=False,nullable=False,default=func.now())
+    data_emprestimo = db.Column(db.DateTime,unique=False,nullable=False)
     data_devolucao = db.Column(db.DateTime,unique=False,nullable=True)

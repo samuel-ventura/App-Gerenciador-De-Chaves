@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css2?family=Bakbak+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kaisei+Opti:wght@700&display=swap');
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+#all-view {
+    width: 100%;
+    height: 100vh;
+}
+
+header {
+    background-color: #2D2927;
+    height: 100px;
+}
+
+header .container {
+    display: flex;
+    justify-content: center;    
+}
+
+header .container .col {
+    width: 240px;
+    height: 130px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+header .container .main-col {
+    background-color: #ffff;
+}
+
+
+header .container .main-col span {
+    color:#2D2927;
+    margin-top: -0.5em;
+}
+
+header .container #logo {
+    font-family: 'Bakbak One', cursive;
+    font-size: 36px;
+    font-style: italic;
+}
+
+header .container span {
+    color: #ffff;
+}
+
+header .btn{
+    margin-top: -1em;
+    background-color: #2D2927;
+    border-color: #2D2927;
+    font-family: 'Lato', sans-serif;
+    font-size: 20px;
+}
+
+header .btn:hover {
+    color: #2D2927;
+    background-color: #ffff;
+}
+
+
+#background-img{ 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 89.4vh;
+    background-image: url('/static/images/keyimgbackground.png');
+    background-position: center;
+    background-repeat: no-repeat; 
+    background-size: cover;
+}
+#background-img p{  
+    font-family: 'Kaisei Opti', serif;
+    font-size: 48px;
+    color: #ffff;
+    text-shadow: 1px 1px 5px #2D2927;
+}

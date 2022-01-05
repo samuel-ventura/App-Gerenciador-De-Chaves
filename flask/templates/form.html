@@ -1,7 +1,11 @@
 {% extends "base.html" %}
 
 {% block conteudo %}
-    {% from 'bootstrap/form.html' import render_form %}
+ <div id="all-page">
+        <div class="container-sm">
+            {% from 'bootstrap/form.html' import render_form %}
 
-    {{ render_form(form,action=action,method="post") }}
+            {{ render_form(form,action=action,method="post") }}
+        </div>
+    </div> 
 {% endblock %}
